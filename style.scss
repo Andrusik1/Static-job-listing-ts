@@ -1,0 +1,187 @@
+$DesaturatedDarkCyan: hsl(180, 29%, 50%);
+$LightGrayishCyanBg: hsl(180, 52%, 96%);
+$LightGrayishCyan: hsl(180, 31%, 95%);
+$DarkGrayishCyan: hsl(180, 8%, 52%);
+$VeryDarkGrayishCyan: hsl(180, 14%, 20%);
+@mixin flex($displayType: flex, $alignItems: center, $justifyContent: center) {
+  display: $displayType;
+  align-items: $alignItems;
+  justify-content: $justifyContent;
+}
+@mixin tagStyle {
+  padding: 10px;
+  background-color: $LightGrayishCyanBg;
+  color: $DesaturatedDarkCyan;
+  font-weight: 800;
+  border-radius: 5px;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "League Spartan";
+}
+body {
+  background-color: $LightGrayishCyanBg;
+}
+header {
+  width: 100%;
+  height: clamp(150px, 15vh, 300px);
+  background: url(./images/bg-header-desktop.svg);
+  background-color: $DesaturatedDarkCyan;
+}
+main {
+    span
+    {
+        display: flex;
+        align-items: center;
+        gap: clamp(3px,2%,10px);
+         .new
+      {
+        font-size: 13px;
+        padding: 3px 5px 0px 5px;
+        border-radius: 10px;
+        background-color: $DesaturatedDarkCyan;
+        color: white;
+        @include flex;
+      }
+      .featured
+      {
+        font-size: 13px;
+         padding: 3px 5px 0px 5px;
+        border-radius: 10px;
+        background-color: $VeryDarkGrayishCyan;
+        color: white;
+        @include flex;
+      }
+    }
+  padding-bottom: 2vh;
+  gap: 2vh;
+  background-color: $LightGrayishCyanBg;
+  flex-direction: column;
+  @include flex;
+  .jobSection__filter {
+    p {
+      text-align: right;
+      flex-grow: 2;
+      &:hover
+      {
+        text-decoration: underline;
+        color:$DesaturatedDarkCyan;
+        cursor: pointer
+    }
+    }
+    .jobSection__filter--tag {
+      
+      @include tagStyle();
+      padding-right: 0;
+     @include flex;
+      gap:5px;
+      height: 20px;
+      .jobSection__filter--delete {
+        background-color: $VeryDarkGrayishCyan;
+        height: calc(100% + 20px);
+       @include flex;
+        padding: 0px 3px 0px 3px;
+        border-radius: 0px 5px 5px 0px;
+      }
+    }
+    gap: 2%;
+    @include flex($justifyContent: flex-end);
+    min-width: calc(70vw + 20px);
+    padding: 10px;
+    height: clamp(50px, 5vh, 200px);
+    background-color: white;
+
+    position: relative;
+    border-radius: 5px;
+    top: calc(-2vh - 20px);
+
+    box-shadow: 1px 23px 21px -20px rgba(66, 68, 90, 1);
+  }
+  .jobSection__offer {
+    background-color: white;
+    width: calc(70vw + 20px);
+    max-width: 75vw;
+    padding: 10px;
+    display: flex;
+    gap: 5vw;
+    height: 10vh;
+    min-height: 100px;
+    border-left: 5px solid $DesaturatedDarkCyan;
+    border-radius: 5px;
+    box-shadow: 0px 12px 24px -14px rgba(66, 68, 90, 1);
+    .jobSection__Img {
+      margin-left: 3%;
+    }
+
+    .jobSection__informations {
+      gap: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .jobSection__informations--companyName {
+      color: $DesaturatedDarkCyan;
+      font-weight: 700;
+     
+    }
+    .jobSection__informations--position {
+      font-weight: 700;
+      font-size: 20px;
+      color: $VeryDarkGrayishCyan;
+      &:hover {
+        color: $DesaturatedDarkCyan;
+        cursor: pointer;
+      }
+    }
+    .jobSection__informations--details {
+      color: $DarkGrayishCyan;
+    }
+    .jobSection__tags {
+      
+      gap: 15px;
+      flex-wrap: wrap;
+      
+      @include flex($justifyContent:flex-end);
+      flex-grow: 2;
+      div {
+        @include tagStyle();
+        cursor: pointer;
+      }
+    }
+  }
+}
+@media  (max-width:730px){
+  main .jobSection__offer
+  {
+    flex-wrap: wrap;
+    height: auto;
+  }
+  main .jobSection__offer .jobSection__tags
+  {
+    width: 100%;
+    justify-content: flex-start;
+  }
+  main .jobSection__offer .jobSection__Img
+  {
+    height: 0;
+    img
+    {
+      position: relative;
+   
+    top: -30px;
+    width: clamp(40px,10vw,40px);
+}
+    }
+ 
+  main .jobSection__offer .jobSection__informations{
+    
+    width: 100%;
+      border-bottom: 1px solid;
+      padding-bottom: 20px;
+  }
+  main
+  {
+    gap: 3vh;
+  }
+}
